@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct CityPage: View {
     
     @State private var offsetSubPage = CGPoint(x: 0, y: UIScreen.main.bounds.height / 1.5)
     @State private var offsetText: CGPoint = .zero
@@ -26,6 +26,10 @@ struct ContentView: View {
                     }
                 }
             }
+            .padding(23)
+            .background(Color(.gray))
+            .cornerRadius(10)
+            
             SubPage()
                 .cornerRadius(30)
                 .offset(CGSize(width: offsetSubPage.x, height: offsetSubPage.y))
@@ -49,20 +53,27 @@ struct ContentView: View {
 struct SubPage: View {
     
     let screenSize = UIScreen.main.bounds
+    @State private var textForSubPage = false
     
     var body: some View {
         VStack{
-            Text("Some New Text")
+            Text(textForSubPage ? "You clicked the button": "You unclicked the button")
                 .padding(50)
-            Spacer()
+            
+            Button(action: {
+                textForSubPage.toggle()
+            }){
+                Text("Press me!")
+            }
         }
         .frame(width: screenSize.width, height: screenSize.height)
         .background(Color(.red))
         .font(.largeTitle)
         .foregroundColor(.white)
     }
+    
 }
 
 #Preview {
-    ContentView()
+    CityPage()
 }
