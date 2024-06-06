@@ -8,71 +8,83 @@
 import SwiftUI
 
 struct CityPage: View {
+
+    @State private var offsetSwipeNotification: CGFloat = .zero
+    @State private var sheetOpened: Bool = false
+    @State private var offsetSubPage: CGFloat = UIScreen.main.bounds.height / 1.3
     
-    @State private var offsetSubPage = CGPoint(x: 0, y: UIScreen.main.bounds.height / 1.5)
-    @State private var offsetText: CGPoint = .zero
-    let screenSize = UIScreen.main.bounds
-    @State private var arr = ["arr", "arr", "arr", "arr", "arr", "arr", "arr", "arr"]
+    @AppStorage("selectedCity") private var selectedCity: Int = 0
     
     var body: some View {
+        
+        let citiesArray = ["Махачкала", "Москва", "Нижний Новгород"]
+        let screenSize = UIScreen.main.bounds
+        
         ZStack{
-            ScrollView(.horizontal){
-                HStack {
-                    ForEach(arr, id: \.self){
-                        Text("\($0)")
-                            .padding(20)
-                            .font(.largeTitle)
-                            .background(Color.green)
+            VStack {
+                HStack{
+                    Button {
+                        sheetOpened.toggle()
+                    } label: {
+                        Text("\(citiesArray[selectedCity])")
+                        Image(systemName: "chevron.down")
                     }
                 }
+                recentlySelection()
+                
+                SwipeNotification()
+                    .offset(x: offsetSwipeNotification, y: 0)
+                    .gesture(
+                        DragGesture()
+                            .onChanged({ value in
+                                offsetSwipeNotification += value.translation.width / 50
+                            })
+                            .onEnded({ value in
+                                withAnimation {
+                                    offsetSwipeNotification = .zero
+                                }
+                            })
+                    )
             }
-            .padding(23)
-            .background(Color(.gray))
-            .cornerRadius(10)
+            .sheet(isPresented: $sheetOpened, content: {
+                ForEach(0..<citiesArray.count, id: \.self){ index in
+                    Button {
+                        selectedCity = index
+                        sheetOpened = false
+                    } label: {
+                        Text(citiesArray[index])
+                            .padding()
+                            .frame(width: screenSize.width, alignment: .leading)
+                            .foregroundColor(.white)
+                    }
+                }
+            })
+            .foregroundColor(.white)
             
             SubPage()
+                .frame(width: screenSize.width, height: screenSize.height)
+                .background(Color(.red))
                 .cornerRadius(30)
-                .offset(CGSize(width: offsetSubPage.x, height: offsetSubPage.y))
+                .offset(x: 0, y: offsetSubPage > screenSize.height / 9 ? offsetSubPage: screenSize.height / 8)
                 .gesture(
                     DragGesture()
                         .onChanged({ value in
-                            offsetSubPage = CGPoint(x: 0, y: value.location.y)
+                            offsetSubPage += value.translation.height / 50
                         })
                         .onEnded({ value in
                             withAnimation {
-                                offsetSubPage = value.translation.height < 20 ? CGPoint(x: 0, y: screenSize.height / 8): CGPoint(x: 0, y: screenSize.height / 1.5)
+                                offsetSubPage = value.translation.height < 50 ? screenSize.height / 9: screenSize.height / 1.3
                             }}))
                 .onTapGesture {
-                    withAnimation{
-                        offsetSubPage = CGPoint(x: 0, y: screenSize.height / 8)
+                    withAnimation(.smooth(duration: 0.5)){
+                        offsetSubPage = screenSize.height / 9
                     }}
         }
+        .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
     }
 }
 
-struct SubPage: View {
-    
-    let screenSize = UIScreen.main.bounds
-    @State private var textForSubPage = false
-    
-    var body: some View {
-        VStack{
-            Text(textForSubPage ? "You clicked the button": "You unclicked the button")
-                .padding(50)
-            
-            Button(action: {
-                textForSubPage.toggle()
-            }){
-                Text("Press me!")
-            }
-        }
-        .frame(width: screenSize.width, height: screenSize.height)
-        .background(Color(.red))
-        .font(.largeTitle)
-        .foregroundColor(.white)
-    }
-    
-}
+
 
 #Preview {
     CityPage()

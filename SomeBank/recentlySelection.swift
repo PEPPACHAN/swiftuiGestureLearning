@@ -8,11 +8,33 @@
 import SwiftUI
 
 struct recentlySelection: View {
+    let cityTopFrameImage = ["fuel", "bankShop", "lentaMarket", "VVMarket"]
+    let cityTopFrameNames = ["Топливо", "Bank Shop", "Лента Гипер", "ВкусВилл"]
+    let screenSize = UIScreen.main.bounds
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Text("Недавние")
+                .font(.title2)
+                .bold()
+                .padding(.leading, 17)
+                .padding(.top, 7)
+            Spacer()
+        }
+        HStack{
+            ForEach(0..<cityTopFrameImage.count, id: \.self){ index in
+                VStack {
+                    Image(cityTopFrameImage[index])
+                        .resizable()
+                        .frame(width: 65, height: 65)
+                        .padding(9)
+                    Text(cityTopFrameNames[index])
+                        .font(.system(size: 13))
+                }
+            }
+        }
+        .padding()
+        .frame(width: screenSize.width - 10)
+        .background(Color(.systemGray6))
+        .cornerRadius(25)
     }
-}
-
-#Preview {
-    recentlySelection()
 }

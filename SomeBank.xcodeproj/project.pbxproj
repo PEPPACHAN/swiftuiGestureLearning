@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC86535B2C0AF77D00C287CA /* subPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC86535A2C0AF77D00C287CA /* subPage.swift */; };
+		FC86535D2C0AF7BB00C287CA /* swipeNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC86535C2C0AF7BB00C287CA /* swipeNotification.swift */; };
+		FC8653612C0AF9FA00C287CA /* recentlySelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8653602C0AF9FA00C287CA /* recentlySelection.swift */; };
 		FCE1A8AF2BFDF0E100D9E111 /* SomeBankApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE1A8AE2BFDF0E100D9E111 /* SomeBankApp.swift */; };
-		FCE1A8B12BFDF0E100D9E111 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE1A8B02BFDF0E100D9E111 /* ContentView.swift */; };
+		FCE1A8B12BFDF0E100D9E111 /* CityPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE1A8B02BFDF0E100D9E111 /* CityPage.swift */; };
 		FCE1A8B32BFDF0E300D9E111 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCE1A8B22BFDF0E300D9E111 /* Assets.xcassets */; };
 		FCE1A8B62BFDF0E300D9E111 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCE1A8B52BFDF0E300D9E111 /* Preview Assets.xcassets */; };
 		FCE1A8C02BFDF0E400D9E111 /* SomeBankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE1A8BF2BFDF0E400D9E111 /* SomeBankTests.swift */; };
@@ -34,9 +37,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC86535A2C0AF77D00C287CA /* subPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subPage.swift; sourceTree = "<group>"; };
+		FC86535C2C0AF7BB00C287CA /* swipeNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swipeNotification.swift; sourceTree = "<group>"; };
+		FC8653602C0AF9FA00C287CA /* recentlySelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recentlySelection.swift; sourceTree = "<group>"; };
 		FCE1A8AB2BFDF0E100D9E111 /* SomeBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SomeBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE1A8AE2BFDF0E100D9E111 /* SomeBankApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeBankApp.swift; sourceTree = "<group>"; };
-		FCE1A8B02BFDF0E100D9E111 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FCE1A8B02BFDF0E100D9E111 /* CityPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPage.swift; sourceTree = "<group>"; };
 		FCE1A8B22BFDF0E300D9E111 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCE1A8B52BFDF0E300D9E111 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FCE1A8BB2BFDF0E400D9E111 /* SomeBankTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SomeBankTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,9 +101,12 @@
 			isa = PBXGroup;
 			children = (
 				FCE1A8AE2BFDF0E100D9E111 /* SomeBankApp.swift */,
-				FCE1A8B02BFDF0E100D9E111 /* ContentView.swift */,
+				FCE1A8B02BFDF0E100D9E111 /* CityPage.swift */,
 				FCE1A8B22BFDF0E300D9E111 /* Assets.xcassets */,
 				FCE1A8B42BFDF0E300D9E111 /* Preview Content */,
+				FC86535A2C0AF77D00C287CA /* subPage.swift */,
+				FC86535C2C0AF7BB00C287CA /* swipeNotification.swift */,
+				FC8653602C0AF9FA00C287CA /* recentlySelection.swift */,
 			);
 			path = SomeBank;
 			sourceTree = "<group>";
@@ -257,8 +266,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCE1A8B12BFDF0E100D9E111 /* ContentView.swift in Sources */,
+				FC86535B2C0AF77D00C287CA /* subPage.swift in Sources */,
+				FC86535D2C0AF7BB00C287CA /* swipeNotification.swift in Sources */,
+				FCE1A8B12BFDF0E100D9E111 /* CityPage.swift in Sources */,
 				FCE1A8AF2BFDF0E100D9E111 /* SomeBankApp.swift in Sources */,
+				FC8653612C0AF9FA00C287CA /* recentlySelection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

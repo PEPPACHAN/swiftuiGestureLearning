@@ -7,12 +7,22 @@
 
 import SwiftUI
 
-struct subPage: View {
+struct SubPage: View {
+    let screenSize = UIScreen.main.bounds
+    @State private var textForSubPage = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Text(textForSubPage ? "You clicked the button": "You unclicked the button")
+                .padding(50)
+            
+            Button(action: {
+                textForSubPage.toggle()
+            }){
+                Text("Press me!")
+            }
+        }
+        .font(.largeTitle)
+        .foregroundColor(.white)
     }
-}
-
-#Preview {
-    subPage()
 }
